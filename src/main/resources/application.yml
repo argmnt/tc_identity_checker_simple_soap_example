@@ -1,0 +1,5 @@
+app:
+  name: ${NAME}
+  surname: ${SURNAME}
+  birthYear: ${BIRTH_YEAR}
+  identityNumber: ${IDENTITY_NUMBER}
