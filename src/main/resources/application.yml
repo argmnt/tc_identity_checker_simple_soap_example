@@ -3,3 +3,6 @@ app:
   surname: ${SURNAME}
   birthYear: ${BIRTH_YEAR}
   identityNumber: ${IDENTITY_NUMBER}
+  soap-service-url: https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx
+  soap-action-url: http://tckimlik.nvi.gov.tr/WS/TCKimlikNoDogrula
+  soap-default-url: http://tckimlik.nvi.gov.tr/WS

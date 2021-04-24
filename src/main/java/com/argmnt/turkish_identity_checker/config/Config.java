@@ -1,12 +1,19 @@
 package com.argmnt.turkish_identity_checker.config;
 
 import com.argmnt.turkish_identity_checker.identity_domain.TCIdentityNumberValidationClient;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 @Configuration
 public class Config {
+
+    private final String SOAP_DEFAULT_URL;
+
+    public Config(@Value("${app.soap-default-url}") String soapDefaultUrl) {
+        SOAP_DEFAULT_URL = soapDefaultUrl;
+    }
 
     @Bean
     public Jaxb2Marshaller marshaller() {
@@ -18,9 +25,9 @@ public class Config {
     }
 
     @Bean
-    public TCIdentityNumberValidationClient countryClient(Jaxb2Marshaller marshaller) {
+    public TCIdentityNumberValidationClient createTCIdentityNumberValidationClient(Jaxb2Marshaller marshaller) {
         TCIdentityNumberValidationClient client = new TCIdentityNumberValidationClient();
-        client.setDefaultUri("http://tckimlik.nvi.gov.tr/WS");
+        client.setDefaultUri(SOAP_DEFAULT_URL);
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;
